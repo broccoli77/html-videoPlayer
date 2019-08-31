@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>表单校验</title>
+    <style>
+        form div{
+        margin: 10px 0;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <head>
+        <h1 style="text-align: center">
+            个人资料卡
+        </h1>
+    </head>
+    <main>
+        <form onsubmit="return check()" method="post" style="margin: 0 auto; width: 276px;">
+            <div>
+                姓名：<input placeholder="你的姓名" type="text" id="name" name="name" autocomplete="off">
+            </div>
+            <div>
+                手机号：<input placeholder="手机号" type="number" id="phone" name="phone">
+            </div>
+            <div>
+                邮箱：<input type="email" id="email" name="email">
+            </div>
+            <div>
+                个人网站：<input type="url" id="website" name="website">
+            </div>
+            <div>
+                出生日期：<input type="date" id="birthday" name="birthday">
+            </div>
+            <div>
+                性别：<input type="radio" name="sex" value="1">男
+                    <input type="radio" name="sex" value="2" checked>女
+            </div>
+            <div>
+                爱好：<input type="checkbox" name="love" value="1" checked>画画
+                        <input type="checkbox" name="love" value="2">游泳
+                        <input type="checkbox" name="love" value="3">篮球
+                        <input type="checkbox" name="love" value="4">唱歌
+            </div>
+            <div style="text-align: center;">
+                <input type="submit"  value="确认提交"/>
+                <input type="reset" />
+            </div>
+        </form>
+    </main>
+    <footer></footer>
+
+</body>
+<script>
+    function check(){
+	var name = document.getElementById("name").value
+	if(name ==  null || name == ''){
+		alert("姓名不能为空");
+   		return false;
+	}
+ 
+	var phone = document.getElementById("phone").value
+	var re = /^1\d{10}$/;
+ 	if (!re.test(phone)) {
+  		alert("请输入正确手机号码！");
+  		return false;
+ 	}
+ 
+	var email = document.getElementById("email").value
+	if(email ==  null || email == ''){
+		alert("邮箱不能为空");
+   		return false;
+	}
+ 
+ 
+	$("#zhuce").submit();
+}
+</script>
